@@ -26,4 +26,3 @@ sum += va_arg(nums, int);
 va_end(nums);
 return (sum);
 }
-
