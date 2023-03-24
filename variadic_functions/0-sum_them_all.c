@@ -1,18 +1,28 @@
 /*
- * File: 0-print_name.c
+ * File: 0-sum_them_all.c
  * Auth: Brennan D Baraban
  */
 
-#include "function_pointers.h"
+#include "variadic_functions.h"
+#include <stdarg.h>
 
 /**
- * print_name - Prints a name.
- * @name: The name to be printed.
- * @f: A pointer to a function that prints a name.
+ * sum_them_all - Returns the sum of all its paramters.
+ * @n: The number of paramters passed to the function.
+ * @...: A variable number of paramters to calculate the sum of.
+ *
+ * Return: If n == 0 - 0.
+ *         Otherwise - the sum of all parameters.
  */
-void print_name(char *name, void (*f)(char *))
+int sum_them_all(const unsigned int n, ...)
 {
-if (name == NULL || f == NULL)
-return;
-f(name);
+va_list nums;
+unsigned int index, sum = 0;
+
+va_start(nums, n);
+
+for (index = 0; index < n; index++)
+sum += va_arg(nums, int);
+va_end(nums);
+return (sum);
 }
