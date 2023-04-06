@@ -3,37 +3,44 @@
 #include "main.h"
 
 /**
- * print_binary - Prints the binary representation of a number
- * @n: The number to representing in binary
+ * binary_to_uint - Converts a binary number to an unsigned int
+ * @b: The binary string to converts
  *
- * Return: Nothing
+ * Return: The positive number converted from a binary
  */
-void print_binary(unsigned long int n)
+unsigned int binary_to_uint(const char *b)
 {
-if (n == 0)
+unsigned int len = 0, count = 0, sum = 0;
+
+if (b == NULL)
+return (0);
+
+len = _strlen(b);
+while (len--)
 {
-_putchar('0');
-return;
+if (b[len] != 48 && b[len] != 49)
+return (0);
+
+if (b[len] == 49)
+sum += 1 << count;
+count++;
 }
 
-_divide(n);
+return (sum);
 }
 
 /**
- * _divide - ...
- * @n: ...
+ * _strlen - Returns the length of a string
+ * @s: String to count
  *
- * Return: ...
+ * Return: String length
  */
-void _divide(unsigned long int n)
+int _strlen(const char *s)
 {
-if (n < 1)
-return;
+int c = 0;
 
-_divide(n >> 1);
+while (s[c])
+c++;
 
-if (n & 1)
-_putchar('1');
-else
-_putchar('0');
+return (c);
 }
